@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated and user.groups.all %}
+    <h2>Hola, {{ request.user.username }}</h2>
+    <p><strong>Tu rol:</strong> {{ user.groups.first.name|capfirst }}</p>
+    <p class="alert alert-info">{{ extra_message }}</p>
+
+    {% else %}
+       <p>No tiene Rol asignado</p> 
+    {% endif %}
+
+{% if user.groups.first.name  == "admin" %}
+    <a class="btn btn-dark me-2" href="{% url 'admin_only' %}">Zona Admin</a>
+{% elif user.groups.first.name  == "cliente" %}
+    <a class="btn btn-success" href="{% url 'cliente_only' %}">Ver mis pedidos</a>
+{% elif  user.groups.first.name  == "staff" %}
+    <a class="btn btn-primary" href="{% url 'staff_only' %}">Panel de control</a>
+{% elif  user.groups.first.name  == "premium" %}
+    <a class="btn btn-primary" href="{% url 'premium_only' %}">Panel de control</a>
+{% endif %}
+
+<a class="btn btn-secondary mt-3" href="{% url 'logout' %}">Cerrar sesión</a>
+{% endblock %}

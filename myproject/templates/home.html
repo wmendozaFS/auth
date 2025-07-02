@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="display-4">Bienvenido a MiApp</h1>
+    <p class="lead mt-3">
+        Esta es una plataforma de ejemplo con autenticación, roles y acceso protegido.
+    </p>
+
+    {% if user.is_authenticated %}
+        <p class="mt-4">Has iniciado sesión como <strong>{{ user.username }}</strong>.</p>
+        <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg mt-3">Ir al Dashboard</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-success btn-lg me-2 mt-3">Iniciar sesión</a>
+        <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg mt-3">Registrarse</a>
+    {% endif %}
+</div>
+{% endblock %}

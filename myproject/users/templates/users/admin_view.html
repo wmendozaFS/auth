@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Zona Admin{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Panel exclusivo para administradores</h2>
+<p>Solo los usuarios con el rol <strong>admin</strong> pueden acceder aquí.</p>
+<a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Volver al Dashboard</a>
+{% endblock %}

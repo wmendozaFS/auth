@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Zona Premium{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Panel exclusivo para usuarios premium</h2>
+<p>Solo los usuarios con el rol <strong>premium</strong> pueden acceder aquí.</p>
+<a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Volver al Dashboard</a>
+{% endblock %}
