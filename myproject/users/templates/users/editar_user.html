@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {# Asume que tienes un template base.html #}
+{% load crispy_forms_tags %} {# Si usas django-crispy-forms para un estilo bonito #}
+
+{% block title %}Editar Usuario: {{ user_to_edit.username }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Editar Usuario: {{ user_to_edit.username }}</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }} {# O {{ form.as_p }} si no usas crispy forms #}
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
+                            <a href="{% url 'user_list' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

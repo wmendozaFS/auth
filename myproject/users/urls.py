@@ -13,4 +13,8 @@ urlpatterns = [
     path('cliente-view/', views.cliente_only_view, name='cliente_only'),
     path('', views.home, name='home'),
 
+    path('users/', views.user_list, name='user_list'), # Para listar usuarios
+    path('users/edit/<int:user_id>/', views.edit_user, name='edit_user'), # Para editar un usuario específico
+    path('forbidden/', views.forbidden_access, name='forbidden_access'), # Si no tiene permisos
+
 ]
