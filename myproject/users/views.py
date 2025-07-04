@@ -103,7 +103,7 @@ def edit_user(request, user_id):
 @user_passes_test(is_admin_or_superuser, login_url='users/login.html')
 def user_list(request):
     users = User.objects.all().order_by('username')
-    return render(request, 'users/user_list.html', {'users': users})
+    return render(request, 'user_list.html', {'users': users})
 
 # --- Vistas de Errores ---
 def error_403(request, exception):
